@@ -45,7 +45,10 @@ buildNumber.properties
 # Avro auto-generated code
 common/src/main/java/com/cisco/wx2/webhookengine/avro/
 
-
+# Maven
+.mvn
+mvnw
+mvnw.cmd
 
 # IntelliJ
 .idea
