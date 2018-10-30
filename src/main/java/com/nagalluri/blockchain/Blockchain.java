@@ -1,7 +1,6 @@
 package com.nagalluri.blockchain;
 
 import org.apache.commons.codec.digest.DigestUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.HashSet;
 import java.util.LinkedList;

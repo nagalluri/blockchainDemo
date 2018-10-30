@@ -1,10 +1,7 @@
 package com.nagalluri.blockchain;
 
-
-
 import org.apache.commons.codec.digest.DigestUtils;
 
-import java.util.List;
 import java.util.Set;
 
 public class Block {
