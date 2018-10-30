@@ -4,17 +4,23 @@ import java.util.Set;
 
 public class TransactionPool {
 
-    private Set<Transaction> transactions;
+    public Set<Transaction> currentTransactions;
 
-    public TransactionPool(Set<Transaction> transactions) {
-        this.transactions = transactions;
+
+    public TransactionPool(Set<Transaction> currentTransactions) {
+        this.currentTransactions = currentTransactions;
     }
 
-    public void addTransaction(Transaction transaction) {
-        transactions.add(transaction);
+    public int addTransaction(Transaction transaction) {
+        this.currentTransactions.add(transaction);
+        return this.currentTransactions.size();
     }
 
-    public void clearTransaction() {
-        transactions.clear();
+    public Set<Transaction> getAllTransactions() {
+        return this.currentTransactions;
+    }
+
+    public void clearTransactions() {
+        currentTransactions.clear();
     }
 }

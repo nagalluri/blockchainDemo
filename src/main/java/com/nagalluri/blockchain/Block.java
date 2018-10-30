@@ -1,19 +1,34 @@
 package com.nagalluri.blockchain;
 
+
+
+import org.apache.commons.codec.digest.DigestUtils;
+
 import java.util.List;
+import java.util.Set;
 
 public class Block {
 
     private long index;
-    private List<Transaction> transactions;
+    private Set<Transaction> transactions;
     private String previousHash;
     private long proof;
 
-    public Block(long index, List<Transaction> transactions, String previousHash, long proof) {
+    public Block(long index, Set<Transaction> transactions, String previousHash) {
         this.index = index;
         this.transactions = transactions;
         this.previousHash = previousHash;
-        this.proof = proof;
+        this.proof = createProof();
+    }
+
+    public long createProof() {
+        this.proof = 0;
+        String hash = DigestUtils.sha256Hex(this.toString());
+        while (!hash.startsWith("00000")) {
+            this.proof += 1;
+            hash = DigestUtils.sha256Hex(this.toString());
+        }
+        return this.proof;
     }
 
     public long getIndex() {
@@ -22,14 +37,6 @@ public class Block {
 
     public void setIndex(long index) {
         this.index = index;
-    }
-
-    public List<Transaction> getTransactions() {
-        return transactions;
-    }
-
-    public void setTransactions(List<Transaction> transactions) {
-        this.transactions = transactions;
     }
 
     public String getPreviousHash() {

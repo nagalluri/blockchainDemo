@@ -32,8 +32,8 @@ public class BlockchainApplicationController {
      * will be added to
      */
     @PostMapping("/newtransaction")
-    public String createTransaction(String id, String to, String from, int amount) {
-        long l = blockchainService.createTransaction(id, to, from, amount);
+    public String createTransaction(String to, String from, int amount) {
+        long l = blockchainService.createTransaction(to, from, amount);
         return "{\"message\": \"new transaction will be added to block " + l + "\"}";
     }
 
@@ -42,7 +42,7 @@ public class BlockchainApplicationController {
      * @return All transactions in the transaction pool
      */
     @GetMapping("/gettransactions")
-    public String getPendingTransactions() {
+    public Set<Transaction> getPendingTransactions() {
         return blockchainService.getPendingTransactions();
     }
 
